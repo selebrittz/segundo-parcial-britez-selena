@@ -1,5 +1,6 @@
 import { Movie } from '../models/movie.model.js';
 
+// Obtener todas las películas
 export const getAllMovies = async (req, res) => {
   try {
     const movies = await Movie.findAll();
@@ -9,6 +10,7 @@ export const getAllMovies = async (req, res) => {
   }
 };
 
+// Obtener una película por ID
 export const getMovieById = async (req, res) => {
   try {
     const movie = await Movie.findByPk(req.params.id);
@@ -19,6 +21,7 @@ export const getMovieById = async (req, res) => {
   }
 };
 
+// Crear una nueva película
 export const createMovie = async (req, res) => {
   try {
     const { title, director, duration, genre, description } = req.body;
@@ -36,6 +39,7 @@ export const createMovie = async (req, res) => {
   }
 };
 
+// Actualizar una película existente
 export const updateMovie = async (req, res) => {
   try {
     const { id } = req.params;
@@ -58,6 +62,7 @@ export const updateMovie = async (req, res) => {
   }
 };
 
+// Eliminar una película
 export const deleteMovie = async (req, res) => {
   try {
     const movie = await Movie.findByPk(req.params.id);
