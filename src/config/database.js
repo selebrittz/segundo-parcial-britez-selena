@@ -1,7 +1,6 @@
 import dotenv from 'dotenv';
 import { Sequelize } from 'sequelize';
 
-
 dotenv.config();
 
 export const sequelize = new Sequelize(
@@ -14,3 +13,13 @@ export const sequelize = new Sequelize(
     }
 );
 
+export const startDB = async () => {
+    try {
+        await sequelize.authenticate();
+        console.log('Conexion exitosa.');
+    } catch (error) {
+        console.error('no se pudo establecer conexion', error);
+    }
+};
+
+export default sequelize;
